@@ -98,6 +98,9 @@ void Entry()
 
 			FileOffset.QuadPart += IO_BUFFER_SZ;
 
+			if(FileOffset.QuadPart >= FILE_SIZE - IO_BUFFER_SZ)
+				FileOffset.QuadPart = 0;
+
 			Entry[i].lpOverlapped->Offset = FileOffset.LowPart;
 			Entry[i].lpOverlapped->OffsetHigh = FileOffset.HighPart;
 
